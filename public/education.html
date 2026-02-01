@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education | Nickson Mahachi</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇿🇼</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .education-section {
+            padding: 10rem 2rem 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 3rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -0.5rem;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid var(--dark);
+        }
+
+        .education-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateX(10px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+
+        .education-degree {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-school {
+            color: var(--primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-period {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .education-description {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .certifications {
+            margin-top: 4rem;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .cert-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+
+        .cert-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: var(--gradient-1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cert-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-issuer {
+            color: var(--gray);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Nick M.</div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/education">Education</a>
+                <a href="/#skills">Skills</a>
+                <a href="/#projects">Projects</a>
+                <a href="/transactions">Transactions</a>
+                <a href="/#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="education-section">
+        <div class="section-header">
+            <h1 class="section-title">Education & Certifications</h1>
+            <p style="color: var(--gray); font-size: 1.2rem;">My academic journey and professional development</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="education-card">
+                    <h3 class="education-degree">O-Level Secondary Education</h3>
+                    <div class="education-school">Nyahondo High School</div>
+                    <div class="education-period">
+                        <i data-lucide="calendar" size="16"></i>
+                        2021 - 2024
+                    </div>
+                    <p class="education-description">
+                        Completed O-Level education with a focus on Mathematics, Science, and Computer Studies. Developed a strong foundation in problem-solving and analytical thinking that sparked my passion for technology.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="education-card">
+                    <h3 class="education-degree">A-Level Sciences (Lower 6)</h3>
+                    <div class="education-school">St. Peter High School</div>
+                    <div class="education-period">
+                        <i data-lucide="calendar" size="16"></i>
+                        2026 - Present
+                    </div>
+                    <p class="education-description">
+                        Currently pursuing A-Level Sciences with a focus on MPC (Mathematics, Physics, Chemistry). This rigorous curriculum enhances my problem-solving abilities and scientific approach to software development.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="education-card">
+                    <h3 class="education-degree">Self-Taught Computer Science</h3>
+                    <div class="education-school">Online Learning & Personal Projects</div>
+                    <div class="education-period">
+                        <i data-lucide="calendar" size="16"></i>
+                        2025 - Present
+                    </div>
+                    <p class="education-description">
+                        Pursued extensive self-study in Computer Science and Full Stack Development through platforms like freeCodeCamp, Udemy, and YouTube. Mastered modern JavaScript frameworks, backend technologies, and responsive design through hands-on projects.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="certifications">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem; text-align: center;">Certifications & Courses</h2>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i data-lucide="code" size="30" color="white"></i>
+                    </div>
+                    <h3 class="cert-title">Full Stack Development</h3>
+                    <p class="cert-issuer">Self-Study & Practice</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i data-lucide="database" size="30" color="white"></i>
+                    </div>
+                    <h3 class="cert-title">MongoDB Development</h3>
+                    <p class="cert-issuer">Online Courses</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i data-lucide="layout" size="30" color="white"></i>
+                    </div>
+                    <h3 class="cert-title">Responsive Web Design</h3>
+                    <p class="cert-issuer">freeCodeCamp</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

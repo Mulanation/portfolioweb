@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | Nickson Mahachi</title>
+    
+    <!-- Favicon Setup -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#89cff0">
+    <meta name="theme-color" content="#0f172a">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #89CFF0;
+            --secondary: #B0E0E6;
+            --dark: #0F172A;
+            --light: #F8FAFC;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --dark-glass: rgba(15, 23, 42, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: var(--light);
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .space-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(137, 207, 240, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(176, 224, 230, 0.15) 0%, transparent 40%);
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .glass {
+            background: var(--glass);
+            backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 50px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.1), 
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shine 6s infinite;
+            z-index: -1;
+        }
+
+        .glass:hover {
+            transform: translateY(-10px) rotate3d(1, 1, 1, 2deg);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+        }
+
+        .error-code {
+            font-size: 12rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), #7EC8E3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            line-height: 1;
+            text-shadow: 0 5px 25px rgba(137, 207, 240, 0.5);
+            position: relative;
+            display: inline-block;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .error-code::after {
+            content: '404';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), #7EC8E3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            z-index: -1;
+            filter: blur(20px);
+            opacity: 0.7;
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        .error-title {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            animation: slideIn 1s ease-out;
+        }
+
+        .error-message {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.6;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .astronaut-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            perspective: 1000px;
+        }
+
+        .astronaut {
+            font-size: 6rem;
+            color: var(--primary);
+            display: inline-block;
+            animation: float 8s ease-in-out infinite, rotate 20s linear infinite;
+            filter: drop-shadow(0 5px 15px rgba(255, 255, 255, 0.3));
+            transform-style: preserve-3d;
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto 40px;
+            animation: slideUp 1s ease-out;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 18px 25px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(137, 207, 240, 0.4);
+            color: inherit;
+            font-family: inherit;
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(137, 207, 240, 0.3), 0 8px 20px rgba(0, 0, 0, 0.2);
+            transform: scale(1.02);
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .search-button {
+            position: absolute;
+            right: 6px;
+            top: 6px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 5px 15px rgba(137, 207, 240, 0.4);
+        }
+
+        .search-button:hover {
+            transform: rotate(15deg) scale(1.1);
+            box-shadow: 0 8px 20px rgba(137, 207, 240, 0.6);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 5px 20px rgba(137, 207, 240, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(137, 207, 240, 0.6);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transition: all 0.6s ease;
+            z-index: -1;
+        }
+
+        .btn-outline:hover::before {
+            left: 0;
+        }
+
+        .btn-outline:hover {
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(137, 207, 240, 0.4);
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: floatParticle linear infinite;
+        }
+
+        .fa-icon {
+            position: absolute;
+            color: var(--primary);
+            animation: floatIcon linear infinite;
+            font-size: 2rem;
+            filter: drop-shadow(0 0 8px rgba(137, 207, 240, 0.7));
+        }
+
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, var(--primary), transparent 70%);
+            box-shadow: 0 0 50px rgba(137, 207, 240, 0.4);
+            animation: rotatePlanet linear infinite;
+        }
+
+        .satellite {
+            position: absolute;
+            font-size: 2rem;
+            color: var(--secondary);
+            animation: orbit linear infinite;
+        }
+
+        .spaceship {
+            position: absolute;
+            font-size: 3rem;
+            color: white;
+            animation: fly linear infinite;
+            filter: drop-shadow(0 0 10px rgba(137, 207, 240, 0.8));
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg); 
+            }
+            25% { 
+                transform: translateY(-20px) rotate(5deg); 
+            }
+            50% { 
+                transform: translateY(-10px) rotate(-5deg); 
+            }
+            75% { 
+                transform: translateY(-15px) rotate(3deg); 
+            }
+        }
+
+        @keyframes rotate {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        @keyframes floatParticle {
+            from { 
+                transform: translateY(100vh) rotate(0deg); 
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            to { 
+                transform: translateY(-100px) rotate(360deg); 
+                opacity: 0;
+            }
+        }
+
+        @keyframes floatIcon {
+            from { 
+                transform: translateY(100vh) rotate(0deg) scale(0.5); 
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            to { 
+                transform: translateY(-100px) rotate(360deg) scale(1); 
+                opacity: 0;
+            }
+        }
+
+        @keyframes rotatePlanet {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes orbit {
+            from { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+        }
+
+        @keyframes fly {
+            0% { 
+                transform: translateX(-200px) translateY(100vh) rotate(45deg); 
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { 
+                transform: translateX(100vw) translateY(-100px) rotate(45deg); 
+                opacity: 0;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.5; filter: blur(15px); }
+            50% { opacity: 0.8; filter: blur(25px); }
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(45deg) translateX(-100%); }
+            20% { transform: rotate(45deg) translateX(100%); }
+            100% { transform: rotate(45deg) translateX(100%); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 8rem;
+            }
+            
+            .error-title {
+                font-size: 2rem;
+            }
+            
+            .error-message {
+                font-size: 1.1rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .glass {
+                padding: 40px 25px;
+            }
+            
+            .astronaut {
+                font-size: 5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 6rem;
+            }
+            
+            .error-title {
+                font-size: 1.7rem;
+            }
+            
+            .astronaut {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="space-bg"></div>
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <div class="astronaut-container">
+            <div class="astronaut">
+                <i class="fas fa-user-astronaut"></i>
+            </div>
+        </div>
+        
+        <h1 class="error-code">404</h1>
+        
+        <div class="glass">
+            <h2 class="error-title">Houston, We Have a Problem!</h2>
+            <p class="error-message">The page you're looking for seems to have drifted off into the cosmos. Don't worry, even astronauts get lost sometimes. Let's get you back to safety!</p>
+            
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search my website...">
+                <button class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="/" class="btn btn-primary">
+                    <i class="fas fa-home"></i> Back to Home
+                </a>
+                <a href="/projects" class="btn btn-outline">
+                    <i class="fas fa-rocket"></i> Explore Projects
+                </a>
+                <a href="/contact" class="btn btn-outline">
+                    <i class="fas fa-paper-plane"></i> Contact Me
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 100;
+        
+        // Font Awesome icons to use
+        const icons = [
+            'fa-rocket', 'fa-star', 'fa-meteor', 'fa-satellite', 
+            'fa-globe', 'fa-moon', 'fa-sun', 'fa-user-astronaut'
+        ];
+        
+        for (let i = 0; i < particleCount; i++) {
+            if (i % 5 === 0) {
+                // Create Font Awesome icons (20% of particles)
+                const icon = document.createElement('i');
+                icon.classList.add('fa-icon', 'fas', icons[Math.floor(Math.random() * icons.length)]);
+                
+                // Random properties for each icon
+                const posX = Math.random() * 100;
+                const delay = Math.random() * 15;
+                const duration = 10 + Math.random() * 20;
+                const size = 1 + Math.random() * 2;
+                
+                icon.style.left = `${posX}%`;
+                icon.style.animationDuration = `${duration}s`;
+                icon.style.animationDelay = `${delay}s`;
+                icon.style.fontSize = `${size}rem`;
+                
+                particlesContainer.appendChild(icon);
+            } else {
+                // Create regular particles (80% of particles)
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random properties for each particle
+                const size = Math.random() * 4 + 1;
+                const posX = Math.random() * 100;
+                const delay = Math.random() * 15;
+                const duration = 5 + Math.random() * 20;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+                
+                // Random particle color (stars can be different colors)
+                const colors = ['#ffffff', '#89CFF0', '#B0E0E6', '#FFD700', '#FFFFFF'];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Create planets
+        const createPlanet = (size, top, left, duration, color) => {
+            const planet = document.createElement('div');
+            planet.classList.add('planet');
+            
+            planet.style.width = `${size}px`;
+            planet.style.height = `${size}px`;
+            planet.style.top = `${top}%`;
+            planet.style.left = `${left}%`;
+            planet.style.animationDuration = `${duration}s`;
+            planet.style.background = `radial-gradient(circle at 30% 30%, ${color}, transparent 70%)`;
+            
+            particlesContainer.appendChild(planet);
+        };
+        
+        // Add some planets to the background
+        createPlanet(80, 15, 10, 120, '#89CFF0');
+        createPlanet(50, 70, 85, 80, '#B0E0E6');
+        
+        // Create a satellite
+        const satellite = document.createElement('i');
+        satellite.classList.add('satellite', 'fas', 'fa-satellite');
+        satellite.style.top = '30%';
+        satellite.style.left = '30%';
+        satellite.style.animationDuration = '20s';
+        particlesContainer.appendChild(satellite);
+        
+        // Create a spaceship
+        const spaceship = document.createElement('i');
+        spaceship.classList.add('spaceship', 'fas', 'fa-rocket');
+        spaceship.style.animationDuration = '30s';
+        spaceship.style.animationDelay = '5s';
+        particlesContainer.appendChild(spaceship);
+        
+        // Search functionality
+        const searchInput = document.querySelector('.search-input');
+        const searchButton = document.querySelector('.search-button');
+        
+        searchButton.addEventListener('click', performSearch);
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+        
+        function performSearch() {
+            const query = searchInput.value.trim();
+            if (query) {
+                // Add a little animation to the search
+                searchInput.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    searchInput.style.transform = 'scale(1)';
+                }, 200);
+                
+                // In a real implementation, you would redirect to search results
+                alert(`Searching for: "${query}"\nThis would normally search the website.`);
+            }
+        }
+        
+        // Add interactive effects to the glass container
+        const glass = document.querySelector('.glass');
+        
+        glass.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            glass.style.transform = `perspective(1000px) rotateY(${x * 5 - 2.5}deg) rotateX(${y * -5 + 2.5}deg) translateY(-10px)`;
+        });
+        
+        glass.addEventListener('mouseleave', () => {
+            glass.style.transform = 'translateY(-10px) rotate3d(1, 1, 1, 2deg)';
+        });
+        
+        glass.addEventListener('mouseenter', () => {
+            glass.style.transform = 'perspective(1000px) translateY(-10px)';
+        });
+        
+        // Add animation to buttons on hover
+        const buttons = document.querySelectorAll('.btn');
+        
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                button.style.transform = 'translateY(-5px) scale(1.05)';
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = '';
+            });
+        });
+    </script>
+</body>
+</html>

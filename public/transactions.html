@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support My Work | Nickson Mahachi</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇿🇼</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .donations-section {
+            padding: 10rem 2rem 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .why-donate {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .why-donate h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .reason-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+        }
+
+        .reason-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .reason-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .reason-content p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .payment-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .payment-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+        }
+
+        .payment-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: var(--gradient-1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .payment-method {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .payment-details {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .payment-info {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 12px;
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+            color: var(--light);
+            word-break: break-all;
+            font-size: 1.1rem;
+        }
+
+        .info-note {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .info-note i {
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Nickson M.</div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/education">Education</a>
+                <a href="/#skills">Skills</a>
+                <a href="/projects">Projects</a>
+                <a href="/donations">Donations</a>
+                <a href="/#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="donations-section">
+        <div class="section-header">
+            <h1 class="section-title">Support My Work</h1>
+            <p style="color: var(--gray); font-size: 1.2rem;">Your support helps me continue creating amazing projects</p>
+        </div>
+
+        <div class="why-donate">
+            <h2>Why Your Support Matters</h2>
+            <div class="reasons-grid">
+                <div class="reason-item">
+                    <div class="reason-icon">
+                        <i data-lucide="code-2" size="24" color="white"></i>
+                    </div>
+                    <div class="reason-content">
+                        <h3>Learning & Growth</h3>
+                        <p>Support helps me access premium courses, tools, and resources to enhance my development skills.</p>
+                    </div>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-icon">
+                        <i data-lucide="server" size="24" color="white"></i>
+                    </div>
+                    <div class="reason-content">
+                        <h3>Server Costs</h3>
+                        <p>Hosting and maintaining projects like NATTY-XMD requires reliable server infrastructure.</p>
+                    </div>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-icon">
+                        <i data-lucide="laptop" size="24" color="white"></i>
+                    </div>
+                    <div class="reason-content">
+                        <h3>Better Equipment</h3>
+                        <p>Upgrading my development tools and hardware enables me to build faster and better.</p>
+                    </div>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-icon">
+                        <i data-lucide="rocket" size="24" color="white"></i>
+                    </div>
+                    <div class="reason-content">
+                        <h3>New Projects</h3>
+                        <p>Your donations fuel the development of innovative open-source projects for the community.</p>
+                    </div>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-icon">
+                        <i data-lucide="book-open" size="24" color="white"></i>
+                    </div>
+                    <div class="reason-content">
+                        <h3>Education</h3>
+                        <p>Currently pursuing A-Level Sciences (MPC) while self-teaching Computer Science.</p>
+                    </div>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-icon">
+                        <i data-lucide="heart" size="24" color="white"></i>
+                    </div>
+                    <div class="reason-content">
+                        <h3>Passion Project</h3>
+                        <p>Every contribution motivates me to create better solutions and give back to the tech community.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem;">Donation Methods</h2>
+
+        <div class="payment-grid">
+            <div class="payment-card">
+                <div class="payment-icon">
+                    <i data-lucide="smartphone" size="40" color="white"></i>
+                </div>
+                <h3 class="payment-method">EcoCash</h3>
+                <p class="payment-details">Mobile money transfer via EcoCash Zimbabwe</p>
+                <div class="payment-info">0771 027 343</div>
+            </div>
+
+            <div class="payment-card">
+                <div class="payment-icon">
+                    <i data-lucide="bitcoin" size="40" color="white"></i>
+                </div>
+                <h3 class="payment-method">Binance</h3>
+                <p class="payment-details">Cryptocurrency donations via Binance</p>
+                <div class="payment-info">Contact for wallet address</div>
+            </div>
+
+            <div class="payment-card">
+                <div class="payment-icon">
+                    <i data-lucide="credit-card" size="40" color="white"></i>
+                </div>
+                <h3 class="payment-method">PayPal</h3>
+                <p class="payment-details">International donations via PayPal</p>
+                <div class="payment-info">nicksonmahachi339@gmail.com</div>
+            </div>
+        </div>
+
+        <div class="info-note">
+            <i data-lucide="heart" size="24" color="#10b981"></i>
+            <div>
+                <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Thank You!</h4>
+                <p style="color: var(--gray);">
+                    Every donation, no matter the size, makes a huge difference. Your support helps me continue developing free tools, learning new technologies, and contributing to the open-source community. I'm incredibly grateful for your generosity!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
